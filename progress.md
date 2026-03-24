@@ -14,3 +14,7 @@
 - Scaffolded backend folders and core files (`main.py`, routers, services, schemas, config)
 - Added sample CSV data and requirements
 - Next: install deps and run backend smoke checks
+
+## Backend Runtime Check
+- Attempted Python setup, but no Python runtime is available in this environment (`python`/`py` not found).
+- Proceeding with full code implementation; runtime verification will be retried if Python becomes available.
