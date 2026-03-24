@@ -9,3 +9,8 @@
 - Scaffold `evalgrid/backend`
 - Implement `/api/health` and benchmark API
 - Verify backend health endpoint
+
+## Backend
+- Scaffolded backend folders and core files (`main.py`, routers, services, schemas, config)
+- Added sample CSV data and requirements
+- Next: install deps and run backend smoke checks
