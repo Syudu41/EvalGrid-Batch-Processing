@@ -30,17 +30,21 @@ def _extract_error_text(response: httpx.Response) -> str:
 
 
 async def call_hf_model(model: ModelConfig, row: dict[str, Any], hf_api_key: str) -> dict[str, Any]:
-    url = f"{HF_API_BASE_URL}/{model.model_id}/v1/chat/completions"
+    url = f"{HF_API_BASE_URL}/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {hf_api_key}",
         "Content-Type": "application/json",
     }
+    user_content = str(row.get("user_prompt", ""))
+    system_content = str(row.get("system_prompt", "") or "")
+    messages: list[dict[str, str]] = []
+    if system_content:
+        messages.append({"role": "system", "content": system_content})
+    messages.append({"role": "user", "content": user_content})
+
     payload = {
         "model": model.model_id,
-        "messages": [
-            {"role": "system", "content": str(row.get("system_prompt", "") or "")},
-            {"role": "user", "content": str(row.get("user_prompt", ""))},
-        ],
+        "messages": messages,
         "temperature": model.temperature,
         "max_tokens": model.max_new_tokens,
         "top_p": model.top_p,

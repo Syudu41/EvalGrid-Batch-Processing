@@ -56,7 +56,7 @@ async def run_benchmark(
                         state.log_path,
                         (
                             f"MODEL_ERROR row={index} model={model.model_id} "
-                            f"attempt={3} error={json.dumps(error_message)}"
+                            f"error={json.dumps(error_message)}"
                         ),
                     )
                     continue
