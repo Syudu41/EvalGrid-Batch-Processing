@@ -23,3 +23,14 @@
 - Scaffolded full frontend (Vite + React + TypeScript + Tailwind + Inter)
 - Implemented all specified components/hooks/types/API wrappers
 - Installed dependencies and confirmed `npm run build` succeeds
+
+## Backend Dependency Fix
+- `pandas==2.2.2` failed to install on Python 3.13 due to missing compatible wheel/build tooling.
+- Updating to a Python 3.13-compatible pandas version to continue backend verification.
+
+## Backend Verification
+- Installed backend dependencies and ran FastAPI on `http://127.0.0.1:8000`
+- Verified `GET /api/health` returns `{ "status": "ok" }`
+- Verified invalid `POST /api/run` returns `422`
+- Verified `GET /api/run/nonexistent-id/status` returns `404`
+- Verified OpenAPI docs at `/docs` return `200`
